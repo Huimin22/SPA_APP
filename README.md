@@ -16,9 +16,8 @@ A Single Page Application (SPA) built with React and Node.js. This project provi
 
 ## Running the Project
 
-### 1. Clone the Repository
 
-First, clone the repository to your local machine:
+Clone the repository to your local machine:
 
 ```bash
 cd SPA_APP
