@@ -1,0 +1,10 @@
+CREATE DATABASE IF NOT EXISTS food_db;
+
+USE food_db;
+
+CREATE TABLE IF NOT EXISTS food_info (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    quantity VARCHAR(255),
+    expiration VARCHAR(255)
+);

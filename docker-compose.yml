@@ -1,0 +1,42 @@
+services:
+  db:
+    image: mysql:8.0
+    container_name: mysql-container
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: ${DB_NAME} 
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./dbdata:/var/lib/mysql
+    networks:
+      - myapp-network
+
+  backend:
+    build:
+      context: ./backend
+    container_name: backend-container
+    ports:
+      - 8800:8800
+    depends_on: 
+      - db
+    networks:
+      - myapp-network
+    env_file:
+      - .env 
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: frontend-container
+    ports:
+      - 3000:3000
+    depends_on:
+      - backend
+    networks:
+      - myapp-network
+
+networks:
+  myapp-network:
+    driver: bridge
