@@ -1,0 +1,23 @@
+services:
+  backend:
+    build:
+      context: ./backend
+    container_name: backend-container
+    ports:
+      - 8800:8800
+    environment:
+      DB_HOST: localdb.cvp0oraj48yg.us-east-1.rds.amazonaws.com 
+      DB_USER: admin 
+      DB_PASSWORD: Mydb123456      
+      DB_NAME: food_db  
+   
+    
+  frontend:
+    build:
+      context: ./frontend
+    container_name: frontend-container
+    ports:
+      - 3000:3000
+    depends_on:
+      - backend
+
