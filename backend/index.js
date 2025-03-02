@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 require('dotenv').config()
 
 const dbConnect = {
-    host: "localdb.cvp0oraj48yg.us-east-1.rds.amazonaws.com",
+    host: process.env.DB_HOST || "db",
     user: "admin",
     password: "Mydb123456",
     database: "food_db"
